@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Listando Categorias</title>
+
+
+    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/fontawesome/css/font-awesome.min.css') }}">
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Index Categorias</h3>
+
+                <table class="table">
+                    <tr>
+                        <td>
+                            Categoria
+                        </td>
+                        <td>
+                            # of Scientist
+                        </td>
+                        <td>
+                            Slug
+                        </td>
+                    </tr>
+                    {% for categoria in categorias %}
+
+                        <tr>
+                            <td>
+                                <a href="{{ path('categorias_show', {
+                                    'slug': categoria.slug
+                                }) }}">{{ categoria.name }}</a>
+                            </td>
+                            <td>
+                                {{ categoria.getCategoriaScientists|length }}
+                            </td>
+                            <td>{{ categoria.slug }}</td>
+                        </tr>
+
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+</html>
